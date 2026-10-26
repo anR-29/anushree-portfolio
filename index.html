@@ -29,6 +29,8 @@
   <script src="hero.js" defer></script>
   <script src="content.js" defer></script>
   <script src="footer.js" defer></script>
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+  <script type="module" src="wear.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -186,6 +188,8 @@
       <section class="section next" id="next" aria-labelledby="next-title">
         <div class="section-head"><p class="kicker">03 / What I want to build next</p><h2 class="section-title" id="next-title">An edge AI device, <em>on custom hardware.</em></h2></div>
         <div class="prose"><p>Our maths model already runs on-device, on a phone. Next, I want to take it all the way to the edge: custom hardware with a keypad and a screen that solves a problem, teaches you every step of how it got there, and runs fully offline. No cloud, no internet, just the model in your hand.</p></div>
+        <!-- Three wearables that could carry the model, modelled in Three.js by wear.js and stepped by the cover timer in content.js. -->
+        <div class="picture wear" data-cover="wear" data-hold="6000" data-labels="[&quot;Glasses: the working, in your lens&quot;, &quot;Earbuds: every step, read aloud&quot;, &quot;A locket: the model, worn offline&quot;]" role="img" aria-label="3D prototypes of three wearables that could carry the maths model: glasses that type the working into the lens, earbuds that read each step aloud, and a locket that opens to show its chip"><canvas aria-hidden="true"></canvas><span class="wear-note" aria-hidden="true"><span></span></span><span class="wear-note" aria-hidden="true"><span></span></span><span class="wear-note" aria-hidden="true"><span></span></span><span class="wear-hint" aria-hidden="true">Drag to turn · Prototype render</span><div class="cover-status" aria-hidden="true"><span class="cover-status-dot"></span><span class="cover-stage">Glasses: the working, in your lens</span><span class="cover-bars"><i class="active"></i><i></i><i></i></span></div></div>
         <div class="beats next-beats"><div><b>The brain</b><p>Our maths model, already running on-device in 16 GB of RAM. Next stop: a small single-board computer.</p></div><div><b>The body</b><p>Custom hardware: a keypad, a small screen, a battery, and a 3D-printed case that actually fits in a pocket.</p></div><div><b>The story</b><p>I'll film it from the first boot to the first right answer, and keep every breakdown in.</p><figure class="meme" style="--tilt: -3deg"><video src="assets/meme-dwight.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><figcaption>the first right answer</figcaption></figure></div></div>
         <div class="stopper"><p class="micro">What I need to build it</p><p class="stopper-line">A workbench, a box of parts, and people who build physical things every day. <em>If that's you, let's talk.</em></p></div>
       </section>

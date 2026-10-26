@@ -104,7 +104,7 @@
 (()=>{
  // Sections rise in as they scroll into view.
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
- const targets=document.querySelectorAll('.story,.hats,.section-head,.project,.shelf,.next .prose,.next-beats,.stopper');
+ const targets=document.querySelectorAll('.story,.hats,.section-head,.project,.shelf,.next .prose,.wear,.next-beats,.stopper');
  let observer;
  if(!reduced.matches && 'IntersectionObserver' in window){
   targets.forEach(el=>el.setAttribute('data-reveal',''));
@@ -118,10 +118,10 @@
 })();
 
 (()=>{
- // Covers step through their stages every 4s while on screen: image cross-fades, the status pill, and the pruning stages.
+ // Covers step through their stages every 4s (or data-hold) while on screen: image cross-fades, the status pill, and the pruning stages.
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  const button=document.querySelector('.motion-toggle');
- const covers=[...document.querySelectorAll('[data-cover]')].map(el=>({el,slides:[...el.querySelectorAll('.cover-slide')],labels:JSON.parse(el.dataset.labels),bars:[...el.querySelectorAll('.cover-bars i')],rest:Number(el.dataset.rest||0),index:0,visible:false,time:0}));
+ const covers=[...document.querySelectorAll('[data-cover]')].map(el=>({el,slides:[...el.querySelectorAll('.cover-slide')],labels:JSON.parse(el.dataset.labels),bars:[...el.querySelectorAll('.cover-bars i')],rest:Number(el.dataset.rest||0),hold:Number(el.dataset.hold||4000),index:0,visible:false,time:0}));
  let paused=false;
  // Covers without image slides (the pruning grid) are driven by data-stage alone.
  function show(c,i){c.slides[c.index]?.classList.remove('active');c.bars[c.index].classList.remove('active');c.index=i;c.slides[i]?.classList.add('active');c.bars[i].classList.add('active');c.el.dataset.stage=i;c.el.querySelector('.cover-stage').textContent=c.labels[i]}
@@ -131,7 +131,7 @@
  button.addEventListener('click',()=>{paused=!paused;document.documentElement.classList.toggle('covers-paused',paused);button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'Play cover motion':'Pause cover motion';animate()});
  setInterval(()=>{
   if(paused||reduce.matches||document.hidden)return;
-  covers.forEach(c=>{if(!c.visible)return;c.time+=500;if(c.time<4000)return;c.time=0;show(c,(c.index+1)%c.labels.length)});
+  covers.forEach(c=>{if(!c.visible)return;c.time+=500;if(c.time<c.hold)return;c.time=0;show(c,(c.index+1)%c.labels.length)});
  },500);
  reduce.addEventListener('change',()=>{if(reduce.matches)covers.forEach(c=>{c.time=0;show(c,c.rest)});animate()});
 })();

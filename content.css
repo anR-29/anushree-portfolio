@@ -646,6 +646,87 @@ html {
 
 .stopper-line em { color: var(--accent); }
 
+/* Three wearables for the model, on a drafting grid like the EyeQ drawings (wear.js). Notes follow the parts they name. */
+
+.wear {
+  margin-top: 48px;
+  background:
+    linear-gradient(#35414f0b 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, #35414f0b 1px, transparent 1px) 0 0 / 32px 32px,
+    radial-gradient(120% 95% at 50% 30%, #f8f5f0 0%, #eee8df 60%, #e5ddd1 100%);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.wear.is-dragging { cursor: grabbing; }
+.wear--off { cursor: default; }
+
+.wear canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+.wear--on canvas { opacity: 1; }
+
+.wear-note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -6px 0 0 -6px;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s ease;
+}
+
+.wear-note.flip { flex-direction: row-reverse; translate: calc(-100% + 12px) 0; }
+.wear-note.on { opacity: 1; }
+
+.wear-note::before {
+  content: "";
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px #de552e30;
+}
+
+.wear-note span {
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #fafbfce8;
+  box-shadow: 0 4px 16px #35414f14;
+}
+
+.wear-hint {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 1;
+  font: 500 11px/1.4 var(--font-mono);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+}
+
 /* Sections rise in as they scroll into view (content.js adds .motion-ready). */
 
 .motion-ready [data-reveal] {
@@ -696,12 +777,16 @@ html {
   .ppt-collage { --tile-width: 160px; --slide-gap: 12px; }
   .project { margin-bottom: 72px; }
   .stopper { padding: 26px 22px; }
+  .wear { margin-top: 36px; }
+  .wear-hint { top: 14px; right: 14px; font-size: 10px; }
+  .wear-note { font-size: 10px; }
+  .wear-note span { padding: 5px 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .motion-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .text-link, .tile .caption h3, .tile .picture::after, .picture .cover-frame img, .cover-bars i, .snapshot, .meme, .hat { transition: none; }
+  .text-link, .tile .caption h3, .tile .picture::after, .picture .cover-frame img, .cover-bars i, .snapshot, .meme, .hat, .wear canvas, .wear-note { transition: none; }
   .review-pointer, .sync-orbit { display: none; animation: none; }
   .post-column { animation: none; transform: translateY(-30px); }
   .column-1, .column-3 { transform: translateY(-90px); }
