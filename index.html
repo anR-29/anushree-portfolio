@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLD1SSN89R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLD1SSN89R');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anushree Roy — Designer, coder, electronics &amp; ML engineer</title>
+  <meta name="description" content="Anushree Roy is a designer, coder, electronics engineer and ML engineer who takes complicated things apart and turns them into stories.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%2335414f'/%3E%3Ctext x='20' y='28' text-anchor='middle' font-family='Georgia' font-size='27' fill='white'%3Ea%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=Kode+Mono:wght@700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="content.css">
+  <link rel="stylesheet" href="footer.css">
+  <script>
+    // Hide the final hero until the intro decides what to do; the timeout is a safety net if hero.js never runs.
+    document.documentElement.classList.add('intro-pending');
+    setTimeout(function () { document.documentElement.classList.remove('intro-pending'); }, 6000);
+  </script>
+  <script src="hero.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="footer.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <section class="hero" id="top">
+    <header class="nav">
+      <a class="nav__link" href="#top">Anushree Roy</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__link" href="#work">Work</a>
+        <a class="nav__link" href="./playground.html">Playground</a>
+        <a class="nav__link" href="./about.html">About</a>
+      </nav>
+    </header>
+
+    <div class="cards">
+      <div class="card-wrap card-wrap--intro" style="--hover-rot: -3deg">
+        <div class="intro-card">
+          <div class="intro-card__holes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="intro-card__lines">
+            <p>Anushree is a designer,</p>
+            <svg class="rule" viewBox="0 0 350 6" preserveAspectRatio="none" aria-hidden="true"><use href="#rule"></use></svg>
+            <p>coder, electronics engineer</p>
+            <svg class="rule" viewBox="0 0 350 6" preserveAspectRatio="none" aria-hidden="true"><use href="#rule"></use></svg>
+            <p>and ML engineer, in no</p>
+            <svg class="rule" viewBox="0 0 350 6" preserveAspectRatio="none" aria-hidden="true"><use href="#rule"></use></svg>
+            <p>particular order.</p>
+            <svg class="rule" viewBox="0 0 350 6" preserveAspectRatio="none" aria-hidden="true"><use href="#rule"></use></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wrap card-wrap--status" style="--hover-rot: 3deg">
+        <svg class="status-card__bg" viewBox="0 0 394 157" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0H394V122L331.5 152H0V0Z" fill="#FDD1BA"/>
+          <path d="M394 122L331.999 152.059L335.5 123.5L394 122Z" fill="#F2511B"/>
+        </svg>
+        <p class="status-card__text">She’s building fun things, breaking a few, and probably fixing one right now...</p>
+      </div>
+
+      <div class="card-wrap card-wrap--photo" style="--hover-rot: -4deg">
+        <figure class="photo-card">
+          <img src="assets/me-portrait.jpg" alt="Anushree smiling, in front of a leaf-print wall" width="400" height="400">
+          <figcaption>hi, it's me</figcaption>
+        </figure>
+      </div>
+
+      <div class="card-wrap card-wrap--name" style="--hover-rot: 6deg">
+        <button class="name-card" type="button" aria-pressed="false">AR</button>
+      </div>
+
+      <div class="card-wrap card-wrap--flower" style="--hover-rot: -7deg">
+        <div class="flower-card">
+          <div class="flower" data-frame="a" aria-hidden="true">
+            <div class="flower__frame flower__frame--a"><span><b>   (o)</b></span><span>-. `|'</span><span>  \(| ,-</span><span>   \|/</span></div>
+            <div class="flower__frame flower__frame--b"><span><b>   (o)</b></span><span> -.(| , </span><span>   \|/</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load-in sequence: hero.js spells data-name, one scene at a time, then hands off to the cards. -->
+    <div class="intro" aria-hidden="true" data-name="anushree">
+      <div class="intro__scene scene-dots">
+        <i style="--i: 4; --c: #F8879F"></i>
+        <i style="--i: 3; --c: #ADD6F7"></i>
+        <i style="--i: 2; --c: #C8D665"></i>
+        <i style="--i: 1; --c: #F3E39A"></i>
+        <i style="--i: 0; --c: #F2511B" class="scene-dots__lead"></i>
+      </div>
+      <div class="intro__scene scene-first"><span class="intro__first"></span></div>
+      <div class="intro__scene scene-rest">
+        <div class="intro__rest"></div>
+        <b class="intro__fly"></b>
+      </div>
+      <div class="intro__scene scene-word"><div class="intro__word"></div></div>
+    </div>
+  </section>
+
+  <!-- The earlier portfolio and the Builders.mu page, as one run of sections. Styles live in content.css. -->
+  <main class="content" id="main">
+    <div class="wrap">
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="story">
+          <div>
+            <p class="kicker">01 / Who I am</p>
+            <h2 id="about-title">An ECE student who learns by <em>taking things apart.</em></h2>
+            <div class="experience">
+              <p class="dates">2025 — 2026</p>
+              <div><p>FuturixAI</p><p class="role">Machine Learning Intern</p><p class="role">Decision model · Data pipelines · LLM validation</p></div>
+              <p class="dates">2025</p>
+              <div><p>BHEL, Bengaluru</p><p class="role">Electronics &amp; Control Systems Intern</p><p class="role">DCS automation · Panel testing</p></div>
+            </div>
+            <figure class="snapshot" style="--tilt: -3deg">
+              <img src="assets/me-laptop.jpg" alt="Anushree at her laptop in front of a whiteboard full of system diagrams" width="899" height="1599" loading="lazy">
+              <figcaption>Whiteboard, laptop, deadline.</figcaption>
+            </figure>
+          </div>
+          <div class="prose">
+            <p>I'm an ECE student at NSUT, and I like building fun things, then taking them apart to see how they work. That curiosity has taken me from wiring control panels at BHEL to cutting a 30B-parameter AI model down until it runs on a phone.</p>
+            <p>Most of my building happens on a screen: ML and data pipelines at FuturixAI, product flows, pitch decks, and 38 social posts that make technical ideas easy to follow.</p>
+            <p>Away from the screen, I'm still making things. I paint, fold origami, and will happily lose an afternoon to any kind of art. And I'm at my best with a dog around, ideally my golden retriever, who supervises most of it.</p>
+          </div>
+        </div>
+        <div class="hats">
+          <p class="kicker">Four hats, one habit</p>
+          <h3>Design it, code it, wire it, <em>train it.</em></h3>
+          <ol class="hat-list">
+            <li class="hat hat--design" style="--tilt: -2deg"><span>Hat 01</span><h4>Designer</h4><p>Product flows and prototypes at FuturixAI, 38 social posts, two pitch decks, and event merch. Graphic Design Head, 2025–26.</p></li>
+            <li class="hat hat--code" style="--tilt: 1.5deg"><span>Hat 02</span><h4>Coder</h4><p>Python, C and C++. A document pipeline across 64+ government, PSU and e-procurement sources, plus app connectors and retrieval for ZeroDesk.</p></li>
+            <li class="hat hat--wire" style="--tilt: -1deg"><span>Hat 03</span><h4>Electronics engineer</h4><p>ECE at NSUT. DCS power plant automation at BHEL: control-panel wiring, testing and commissioning. MATLAB and Simulink.</p></li>
+            <li class="hat hat--train" style="--tilt: 2deg"><span>Hat 04</span><h4>ML engineer</h4><p>The FxAI Decision Model at FuturixAI, and a gradient-free way to cut Qwen3-30B into maths specialists that run on a phone.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="work" aria-labelledby="work-title">
+        <div class="section-head">
+          <div class="work-label"><p class="kicker">02 / Selected work</p><button class="motion-toggle" type="button" aria-pressed="false">Pause cover motion</button></div>
+          <h2 class="section-title" id="work-title">Making AI smaller, apps simpler, <em>and tech easier to follow.</em></h2>
+        </div>
+
+        <article class="project" aria-labelledby="p1-title">
+          <div class="picture prune" data-cover="prune" data-rest="1" data-labels="[&quot;Qwen3-30B · every expert&quot;, &quot;Keep only the subject’s experts&quot;, &quot;Calibrate on its verified solutions&quot;]" role="img" aria-label="Illustration of two models drawn layer by layer: the full Qwen3-30B, and a maths specialist that keeps only the experts its subject needs"><canvas aria-hidden="true"></canvas><div class="cover-status" aria-hidden="true"><span class="cover-status-dot"></span><span class="cover-stage">Qwen3-30B · every expert</span><span class="cover-bars"><i class="active"></i><i></i><i></i></span></div></div>
+          <div class="caption"><div><p class="micro">01 · Machine learning</p><h3 id="p1-title">Cutting a 30B model down until it runs on a phone.</h3><p>Qwen3-30B is a mixture of experts, and one subject only needs some of them. We built a gradient-free way to turn it into subject specialists.</p></div><div class="meta">B.Tech team project<br>Illustration, not real weights</div></div>
+          <div class="beats stats"><div><b>Accuracy</b><strong class="stat">40+ points</strong><p>ahead of Fisher-based structured pruning (EMNLP 2026) on GSM8K and MATH 500, at matched sparsity.</p><figure class="meme" style="--tilt: -4deg"><video src="assets/meme-kick.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><figcaption>us vs. the baseline</figcaption></figure></div><div><b>On a phone</b><strong class="stat">8 tokens/s</strong><p>for the 30B maths specialist on a 16 GB RAM phone setup. We keep only the subject's experts and quantise the rest.</p></div><div><b>Speed to build</b><strong class="stat">20 minutes</strong><p>per subject expert instead of 4 hours, about 12x faster than QLoRA, for a 1-point accuracy loss. It calibrates on the model's own verified solutions.</p></div></div>
+        </article>
+
+        <article class="project" aria-labelledby="p2-title">
+          <div class="picture version" data-cover="version" data-labels="[&quot;Document first&quot;, &quot;Changes in context&quot;, &quot;Review an update&quot;]"><div class="cover-frame"><img class="cover-slide active" src="assets/doc-motion-0.jpg" alt="Light theme document version control interface with the document at the centre" loading="lazy"><img class="cover-slide" src="assets/doc-motion-1.jpg" alt="" aria-hidden="true" loading="lazy"><img class="cover-slide" src="assets/doc-motion-2.jpg" alt="" aria-hidden="true" loading="lazy"></div><div class="cover-status" aria-hidden="true"><span class="cover-status-dot"></span><span class="cover-stage">Document first</span><span class="cover-bars"><i class="active"></i><i></i><i></i></span></div><span class="review-pointer" aria-hidden="true"></span></div>
+          <div class="caption"><div><p class="micro">02 · Product design</p><h3 id="p2-title">Version control that confused people, until I rebuilt it.</h3><p>I set out to give teams one way to track, review and restore every kind of file, from documents to video.</p></div><div class="meta">Product design · Two versions<br><a class="text-link" href="version-control.html">Read the case study ↗</a></div></div>
+          <div class="beats"><div><b>What broke</b><p>V1 opened on a timeline of everything that had happened to a file. The feedback: complicated and hard to navigate. Renaming buttons wouldn't fix that.</p><figure class="meme" style="--tilt: 3deg"><video src="assets/meme-floor.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><figcaption>users, meeting V1</figcaption></figure></div><div><b>The rebuild</b><p>I cut the scope to editable documents, mapped owners and contributors on a whiteboard, and rebuilt the flow so the document comes first.</p></div><div><b>What I learned</b><p>Start with the thing people came to work on. Bring in the history when it becomes useful.</p></div></div>
+        </article>
+
+        <article class="project" aria-labelledby="p3-title">
+          <div class="picture social-wall-cover" role="img" aria-label="Moving columns of Anushree’s social media designs"><div class="post-wall" aria-hidden="true"><div class="post-column column-0"><div class="post-group"><div class="post-tile"><img src="assets/social-wall-00.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-04.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="post-group"><div class="post-tile"><img src="assets/social-wall-00.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-04.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="post-column column-1"><div class="post-group"><div class="post-tile"><img src="assets/social-wall-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-05.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="post-group"><div class="post-tile"><img src="assets/social-wall-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-05.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="post-column column-2"><div class="post-group"><div class="post-tile"><img src="assets/social-wall-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-06.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="post-group"><div class="post-tile"><img src="assets/social-wall-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-06.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="post-column column-3"><div class="post-group"><div class="post-tile"><img src="assets/social-wall-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-07.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="post-group"><div class="post-tile"><img src="assets/social-wall-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="post-tile"><img src="assets/social-wall-07.jpg" alt="" loading="lazy" decoding="async"></div></div></div></div></div>
+          <div class="caption"><div><p class="micro">03 · Visual storytelling</p><h3 id="p3-title">Making technical ideas worth stopping the scroll for.</h3><p>A deployment pipeline is hard to explain in the two seconds someone gives a post.</p></div><div class="meta">Concept · Copy · Layout · Illustration<br><a class="text-link" href="social.html">See all 38 posts ↗</a></div></div>
+          <div class="beats"><div><b>The twist</b><p>I turned deployment sprawl into a shopping cart, and office life into twelve zodiac signs with corporate jobs.</p></div><div><b>The work</b><p>38 posts across 5 series, with the concept, copy, layout and illustration for every one.</p></div><div><b>Why it matters here</b><p>Everything you build gets filmed and shared. I already think about what makes someone stop and watch.</p></div></div>
+        </article>
+
+        <div class="shelf">
+          <p class="kicker">Also on the shelf</p>
+          <div class="tiles">
+            <a class="tile" href="desktop.html">
+              <div class="picture desktop" data-cover="desktop" data-labels="[&quot;Your files, nearby&quot;, &quot;Sync in progress&quot;, &quot;An assistant at hand&quot;]"><div class="cover-frame"><img class="cover-slide active" src="assets/desk-motion-0.jpg" alt="DeskTop file workspace displayed over a mountain landscape desktop" loading="lazy"><img class="cover-slide" src="assets/desk-motion-1.jpg" alt="" aria-hidden="true" loading="lazy"><img class="cover-slide" src="assets/desk-motion-2.jpg" alt="" aria-hidden="true" loading="lazy"></div><div class="cover-status" aria-hidden="true"><span class="cover-status-dot"></span><span class="cover-stage">Your files, nearby</span><span class="cover-bars"><i class="active"></i><i></i><i></i></span></div><span class="sync-orbit" aria-hidden="true"></span></div>
+              <div class="caption"><h3>DeskTop</h3><p>An offline-first file workspace with visible sync and an AI assistant.</p><span>Case study ↗</span></div>
+            </a>
+            <a class="tile" href="decks.html">
+              <div class="picture decks ppt-collage" role="img" aria-label="Animated collage of Anushree’s presentation slides"><div class="slide-wall" aria-hidden="true"><div class="slide-row row-0"><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-00.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-02.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-00.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-02.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="slide-row row-1"><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-05.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-05.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="slide-row row-2"><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-08.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-08.jpg" alt="" loading="lazy" decoding="async"></div></div></div><div class="slide-row row-3"><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-09.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-10.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-11.jpg" alt="" loading="lazy" decoding="async"></div></div><div class="slide-group"><div class="slide-tile"><img src="assets/ppt-collage-09.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-10.jpg" alt="" loading="lazy" decoding="async"></div><div class="slide-tile"><img src="assets/ppt-collage-11.jpg" alt="" loading="lazy" decoding="async"></div></div></div></div></div>
+              <div class="caption"><h3>Ideas, slide by slide</h3><p>Two pitch decks that make complex products easy to follow.</p><span>Presentation design ↗</span></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section next" id="next" aria-labelledby="next-title">
+        <div class="section-head"><p class="kicker">03 / What I want to build next</p><h2 class="section-title" id="next-title">An edge AI device, <em>on custom hardware.</em></h2></div>
+        <div class="prose"><p>Our maths model already runs on-device, on a phone. Next, I want to take it all the way to the edge: custom hardware with a keypad and a screen that solves a problem, teaches you every step of how it got there, and runs fully offline. No cloud, no internet, just the model in your hand.</p></div>
+        <div class="beats next-beats"><div><b>The brain</b><p>Our maths model, already running on-device in 16 GB of RAM. Next stop: a small single-board computer.</p></div><div><b>The body</b><p>Custom hardware: a keypad, a small screen, a battery, and a 3D-printed case that actually fits in a pocket.</p></div><div><b>The story</b><p>I'll film it from the first boot to the first right answer, and keep every breakdown in.</p><figure class="meme" style="--tilt: -3deg"><video src="assets/meme-dwight.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video><figcaption>the first right answer</figcaption></figure></div></div>
+        <div class="stopper"><p class="micro">What I need to build it</p><p class="stopper-line">A workbench, a box of parts, and people who build physical things every day. <em>If that's you, let's talk.</em></p></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer__top">
+      <div class="footer__intro">
+        <p class="footer__quote">Let's build something the internet can't scroll past.</p>
+        <p class="footer__label">© 2026 Anushree Roy</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <div class="footer__col">
+          <p class="footer__label">Say hi</p>
+          <a class="footer__link" href="mailto:royanushree.2912@gmail.com">Email</a>
+          <a class="footer__link" href="https://www.linkedin.com/in/anushree-roy-082370204" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">Page</p>
+          <a class="footer__link" href="#top">Home</a>
+          <a class="footer__link" href="#work">Work</a>
+          <a class="footer__link" href="./playground.html">Playground</a>
+          <a class="footer__link" href="./about.html">About</a>
+        </div>
+      </nav>
+    </div>
+    <!-- Filled by footer.js: click a sprout to water it. -->
+    <div class="garden" role="group" aria-label="ASCII garden"></div>
+  </footer>
+
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="rule" viewBox="0 0 350 6"><path class="rule__path" fill="#FFB28A" opacity="0.3"/></symbol>
+  </svg>
+</body>
+</html>

@@ -1,0 +1,518 @@
+:root {
+  --bg: #F9F8F6;
+  --hero-bg: #FAF9F7;
+  --orange: #F2511B;
+  --peach: #FDD1BA;
+  --lime: #C8D665;
+  --sky: #ADD6F7;
+  --pink: #FD6B94;
+  --ink: #444;
+  --muted: #969696;
+  --muted-hover: #666;
+  --paper: #F9F8F6;
+
+  /* "Self Modern" is the original (commercial) face; Fraunces is the free stand-in. */
+  --font-serif: "Self Modern", "Fraunces", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-ascii: "Kode Mono", ui-monospace, monospace;
+
+  /* Overwritten from hero.js with spring curves via linear() where supported. */
+  --ease-hover: cubic-bezier(0.34, 1.25, 0.64, 1);
+  --ease-pop: cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  overflow: clip;
+  background: var(--hero-bg);
+  z-index: 8;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 18px;
+  background: var(--bg);
+}
+
+.nav__links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav__link {
+  font: 500 12px/1.65 var(--font-mono);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s ease-out;
+}
+
+.nav__link:hover {
+  color: var(--muted-hover);
+}
+
+.nav__link.is-pressed {
+  color: var(--orange);
+}
+
+/* Cards: a 799x425 composition centred in the viewport */
+
+.cards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
+  width: 799px;
+  height: 425px;
+  transform: translate(-50%, -50%);
+}
+
+.card-wrap {
+  position: absolute;
+  transition: transform 0.45s var(--ease-hover);
+}
+
+.card-wrap:hover {
+  transform: scale(1.05) rotate(var(--hover-rot));
+}
+
+.card-wrap--intro { top: 0; left: 35px; width: 440px; height: 325px; }
+.card-wrap--status { bottom: 36px; right: 0; width: 410px; height: 184px; }
+.card-wrap--name { top: 68px; left: 559px; width: 127px; height: 94px; }
+.card-wrap--flower { bottom: 0; left: 0; width: 131px; height: 134px; }
+
+/* Orange notepad card */
+
+.intro-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: max-content;
+  padding: 12px 24px 24px;
+  background: var(--orange);
+  transform: translate(-50%, -50%) rotate(-11deg);
+}
+
+.intro-card__holes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro-card__holes i {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+}
+
+.intro-card__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intro-card__lines p {
+  width: 346px;
+  margin: 0;
+  font: 300 24px/1.2 var(--font-serif);
+  /* Pushes Fraunces toward Self Modern: lighter, higher contrast, softened terminals. */
+  font-variation-settings: "opsz" 60, "SOFT" 50, "WONK" 0;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+
+.rule {
+  display: block;
+  width: 350px;
+  height: 6px;
+}
+
+/* Peach sticky note with folded corner */
+
+.status-card__bg {
+  position: absolute;
+  top: calc(53.9267% - 78.5px);
+  left: 6px;
+  width: 394px;
+  height: 157px;
+  transform: rotate(4deg);
+}
+
+.status-card__text {
+  position: absolute;
+  top: 52%;
+  left: 30px;
+  width: 346px;
+  margin: 0;
+  font: 400 20px/1.2 var(--font-mono);
+  letter-spacing: 0.01em;
+  color: var(--orange);
+  transform: translateY(-50%) rotate(4deg);
+}
+
+/* Name card: click to invert */
+
+.name-card {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  translate: -50% 0;
+  rotate: 8deg;
+  width: 118px;
+  margin: 0;
+  padding: 10px;
+  border: 0;
+  border-radius: 0;
+  font: 350 48px/1.2 var(--font-serif);
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: var(--ink);
+  background: var(--lime);
+  cursor: pointer;
+  transition: background-color 0.4s ease-out, color 0.4s ease-out;
+}
+
+.name-card[aria-pressed="true"] {
+  color: var(--lime);
+  background: var(--ink);
+}
+
+.name-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* Polaroid of Anushree, tucked in at the top right */
+
+.card-wrap--photo { top: -34px; left: 694px; width: 150px; height: 182px; }
+
+.photo-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 8px 8px 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / .1);
+  transform: translate(-50%, -50%) rotate(7deg);
+}
+
+.photo-card img {
+  display: block;
+  width: 122px;
+  height: 122px;
+  object-fit: cover;
+}
+
+.photo-card figcaption {
+  padding: 8px 0 10px;
+  font: 500 11px/1.2 var(--font-mono);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Blue card with a two-frame ASCII flower */
+
+.flower-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  padding: 22.5px 20px;
+  background: var(--sky);
+  transform: translate(-50%, -50%) rotate(9deg);
+}
+
+.flower {
+  position: relative;
+  width: 73px;
+  height: 71px;
+}
+
+.flower__frame {
+  position: absolute;
+  font: 700 15px/17.5px var(--font-ascii);
+  white-space: pre;
+  color: #000;
+}
+
+.flower__frame span {
+  display: block;
+}
+
+.flower__frame b {
+  font-weight: inherit;
+  color: var(--pink);
+}
+
+.flower__frame--a { top: 49%; right: 0; transform: translateY(-50%); }
+.flower__frame--b { bottom: 0; left: 50%; transform: translateX(-50%); }
+
+.flower[data-frame="a"] .flower__frame--b,
+.flower[data-frame="b"] .flower__frame--a {
+  visibility: hidden;
+}
+
+/* Custom cursor */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--orange);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+/* Intro sequence */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--hero-bg);
+  display: none;
+}
+
+.intro-pending .intro,
+.intro.is-playing {
+  display: block;
+}
+
+.intro-pending .hero .nav,
+.intro-pending .hero .cards {
+  visibility: hidden;
+}
+
+.intro__scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.scene-dots {
+  --d: min(33vh, 60vw);
+  opacity: 1;
+}
+
+.scene-dots i {
+  position: absolute;
+  top: 47%;
+  left: 49.5%;
+  width: var(--d);
+  height: var(--d);
+  margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
+  border-radius: 50%;
+  background: var(--c);
+  transform: translateY(80vh);
+}
+
+.scene-first {
+  background: var(--orange);
+}
+
+.intro__first,
+.intro__rest,
+.intro__word {
+  font-family: var(--font-serif);
+  font-weight: 350;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+  line-height: 1;
+}
+
+.intro__first {
+  position: absolute;
+  top: 47%;
+  left: 49%;
+  font-size: min(78vh, 56vw);
+  color: var(--paper);
+  translate: -50% -58%;
+}
+
+.scene-rest {
+  --big: min(84vh, 66vw);
+  background: var(--lime);
+}
+
+.intro__rest {
+  position: absolute;
+  bottom: calc(100% - 73vh);
+  left: -1.5vw;
+  display: flex;
+  font-size: var(--big);
+  color: var(--paper);
+  line-height: 0.75;
+}
+
+.intro__rest span,
+.intro__word span {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.intro__fly {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--big) * 0.1);
+  height: calc(var(--big) * 0.1);
+  border-radius: 50%;
+  background: var(--paper);
+  opacity: 0;
+}
+
+.scene-word {
+  background: var(--sky);
+}
+
+/* --n is the letter count (set by hero.js), so longer names shrink to fit narrow screens. */
+.intro__word {
+  position: absolute;
+  top: 51%;
+  left: 49.5%;
+  display: flex;
+  font-size: min(20vh, 120vw / var(--n, 4));
+  color: #161616;
+  translate: -50% -50%;
+}
+
+.intro__i {
+  position: relative;
+}
+
+.intro__dot {
+  position: absolute;
+  top: 0.13em;
+  left: 50%;
+  width: 0.115em;
+  height: 0.115em;
+  margin-left: -0.0575em;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Tablet: same composition, cards nudged inward */
+
+@media (min-width: 810px) and (max-width: 1099.98px) {
+  .card-wrap--intro { left: 74px; }
+  .card-wrap--status { bottom: 33px; right: 47px; }
+  .card-wrap--name { top: 66px; left: auto; right: 125px; }
+  .card-wrap--flower { bottom: -4px; left: 72px; }
+  .card-wrap--photo { left: auto; right: -14px; }
+}
+
+/* Mobile: cards stack in a column */
+
+@media (max-width: 809.98px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(390px, 100%);
+    height: auto;
+  }
+
+  .card-wrap {
+    position: relative;
+    inset: auto;
+  }
+
+  .card-wrap--intro { order: 0; width: 100%; height: 290px; }
+  .card-wrap--name { order: 1; }
+  .card-wrap--status { order: 2; width: 100%; height: 160px; }
+
+  /* Tucked into the gap beside the name card, overlapping the notepad's lower edge. */
+  .card-wrap--flower {
+    position: absolute;
+    top: 262px;
+    left: calc(50% - 184px);
+    z-index: 1;
+  }
+
+  /* The polaroid sits on the other side of the name card, mirroring the flower. */
+  .card-wrap--photo {
+    position: absolute;
+    top: 248px;
+    left: calc(50% + 52px);
+    z-index: 1;
+    width: 120px;
+    height: 150px;
+  }
+
+  .photo-card img {
+    width: 96px;
+    height: 96px;
+  }
+
+  /* Portrait screens: keep the oversized letters near the middle instead of the bottom third. */
+  .intro__rest {
+    bottom: 40vh;
+  }
+
+  .intro-card__lines p {
+    width: 250px;
+    font-size: 18px;
+  }
+
+  .rule {
+    width: 250px;
+  }
+
+  .status-card__bg {
+    top: calc(50% - 60px);
+    left: calc(50% - 150px);
+    width: 301px;
+    height: 120px;
+  }
+
+  .status-card__text {
+    top: 49%;
+    left: 50%;
+    width: 275px;
+    font-size: 16px;
+    transform: translate(-50%, -50%) rotate(4deg);
+  }
+}

@@ -1,0 +1,247 @@
+:root {
+  --bg: #f9f8f6;
+  --ink: #666;
+  --ink-muted: #969696;
+  --accent: #f2511b;
+  --rule: #e2e2e2;
+
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  /* The original uses "Self Modern" (commercial); Newsreader is a free stand-in. */
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Figtree", system-ui, sans-serif;
+
+  /* Framer spring { bounce: 0.1, duration: 0.6 } solved to stiffness ≈200 / damping ≈25.4 and sampled. */
+  --spring: linear(0, 0.0267, 0.0853, 0.1681, 0.2551, 0.3497, 0.4362, 0.5221, 0.5957, 0.6654, 0.7228, 0.7754, 0.8175, 0.8551, 0.8846, 0.9103, 0.93, 0.947, 0.9597, 0.9703, 0.9786, 0.9847, 0.9895, 0.993, 0.9957, 0.9976, 0.999, 0.9999, 1.0005, 1.0009, 1.0011, 1.0012, 1.0012, 1.0012, 1.0011, 1.001, 1.0008, 1.0007, 1.0006, 1.0005, 1);
+  --spring-duration: 0.66s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 18px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font: 500 12px/165% var(--mono);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+.nav-link:hover {
+  color: var(--ink);
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--accent);
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: clip;
+}
+
+.card-media {
+  display: flex;
+  overflow: clip;
+}
+
+.card-media img,
+.card-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  -webkit-user-drag: none;
+  transition:
+    transform var(--spring-duration) var(--spring),
+    filter var(--spring-duration) var(--spring);
+}
+
+@media (hover: hover) {
+  .card:hover .card-media img,
+  .card:hover .card-media video {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+  }
+}
+
+.card-title,
+.card-desc {
+  font-size: 10px;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.card-title {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.card-desc {
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+/* ---------- Desktop / tablet: infinite canvas ---------- */
+
+.pg-stage {
+  display: none;
+}
+
+@media (min-width: 810px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  .site-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .pg-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+  }
+
+  .pg-mobile {
+    display: none;
+  }
+}
+
+.pg-canvas {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 2400px;
+  height: 1560px;
+}
+
+.pg-canvas .card {
+  position: absolute;
+}
+
+.pg-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(-50%);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.pg-hint svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--ink-muted);
+}
+
+.pg-hint span {
+  font: 500 12px/0.9 var(--mono);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ---------- Phone: stacked list ---------- */
+
+.pg-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 32px 18px 18px;
+}
+
+.pg-intro h1 {
+  width: 80%;
+  font: 300 24px/140% var(--serif);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.pg-intro p {
+  font: 300 14px/1.2 var(--sans);
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+}
+
+.pg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1600px;
+  padding: 18px 18px 36px;
+}
+
+/* ---------- Custom cursor ---------- */
+
+.pg-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}

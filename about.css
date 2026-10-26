@@ -1,0 +1,325 @@
+/* About page: bio and CV rows beside a photo grid, rebuilt from emmiwu.com/about.
+   Also declares the tokens footer.css expects (same values as hero.css). */
+
+:root {
+  --bg: #F9F8F6;
+  --orange: #F2511B;
+  --lime: #C8D665;
+  --sky: #ADD6F7;
+  --pink: #FD6B94;
+  --ink: #666;
+  --muted: #969696;
+  --rule: #E3E3E3;
+  --paper: #F9F8F6;
+
+  /* "Self Modern" is the original (commercial) face; Fraunces is the free stand-in. */
+  --font-serif: "Self Modern", "Fraunces", Georgia, serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-ascii: "Kode Mono", ui-monospace, monospace;
+
+  --ease-pop: cubic-bezier(0.34, 1.2, 0.64, 1);
+  /* Framer spring { bounce: 0.2, duration: 0.6 }, sampled the same way as hero.js. */
+  --spring-appear: linear(0, 0.0207, 0.0737, 0.1476, 0.2333, 0.324, 0.4147, 0.5019, 0.5831, 0.657, 0.7228, 0.7802, 0.8295, 0.8711, 0.9056, 0.9337, 0.9562, 0.9739, 0.9874, 0.9975, 1.0047, 1.0097, 1.0128, 1.0145, 1.0151, 1.015, 1.0143, 1.0133, 1.012, 1.0106, 1.0093, 1.0079, 1.0067, 1.0055, 1.0045, 1.0036, 1.0028, 1.0021, 1.0016, 1.0011, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nav: sticks to the top on this page (the hero's nav is absolute instead) */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 18px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav__links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav__link {
+  font: 500 12px/1.65 var(--font-mono);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.2s ease-out;
+}
+
+.nav__link:hover {
+  color: var(--ink);
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--orange);
+}
+
+/* Layout: a text column of about a third, photos take the rest and stay in view while the text scrolls */
+
+.about {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 48px 32px 96px;
+}
+
+.about__text {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 48px;
+  width: min(36%, 540px);
+}
+
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__title,
+.about__heading {
+  margin: 0;
+  font-weight: 300;
+  font-family: var(--font-serif);
+  /* Pushes Fraunces toward Self Modern: lighter, higher contrast, softened terminals. */
+  font-variation-settings: "opsz" 60, "SOFT" 50, "WONK" 0;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.about__title {
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.about__heading {
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.about__bio,
+.about__row {
+  font: 300 16px/1.65 var(--font-sans);
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.about__bio {
+  color: var(--ink);
+}
+
+.about__bio p,
+.about__bio ul {
+  margin: 0;
+}
+
+/* An empty line between paragraphs; a list stays close to its lead-in. */
+.about__bio > * + p {
+  margin-top: 1.4em;
+}
+
+.about__bio p + ul {
+  margin-top: 0.5em;
+}
+
+.about__bio ul {
+  padding: 0;
+  list-style: none;
+}
+
+.about__bio li {
+  position: relative;
+  padding-left: 1.276em;
+}
+
+.about__bio li + li {
+  margin-top: 0.3em;
+}
+
+.about__bio li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.about__bio a {
+  color: inherit;
+  text-decoration: underline 1px;
+  text-underline-offset: 2px;
+}
+
+.about__bio a:hover,
+.about__bio a:focus-visible {
+  color: var(--orange);
+}
+
+/* CV rows: "Org / role" on the left, years on the right, a hairline under each */
+
+.about__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  /* The original's dividers are 4px boxes with the hairline near the top; the 1px keeps its total height. */
+  padding: 0 0 1px;
+  list-style: none;
+}
+
+.about__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--rule);
+}
+
+.about__org {
+  color: var(--ink);
+}
+
+.about__year {
+  flex: none;
+  padding-top: 2px;
+  font: 300 13px/1.4 var(--font-mono);
+  letter-spacing: 0.01em;
+}
+
+.about__short {
+  display: none;
+}
+
+/* Photos: portrait spans both rows. Each image is a 3:4 box centred in its frame,
+   so short frames crop the middle of the photo rather than refitting it. */
+
+.about__photos {
+  position: sticky;
+  top: 80px;
+  display: grid;
+  flex: 1 1 0;
+  grid-template-columns: repeat(2, minmax(50px, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-width: 0;
+  height: clamp(560px, calc(100vh - 112px), 860px);
+}
+
+.about__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.about__photo--main {
+  grid-row: span 2;
+}
+
+.about__photo img {
+  display: block;
+  flex: none;
+  width: 100%;
+  min-height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  /* Set --focus inline to keep a subject in view when the photo is taller than its 3:4 box. */
+  object-position: var(--focus, 50% 50%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about__photos {
+    animation: about-appear 0.6s var(--spring-appear) 0.2s backwards;
+  }
+}
+
+@keyframes about-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Custom cursor (created by about.js) */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--orange);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+
+/* Short names below 1400px. The original switches at 1200px, but these names run longer. */
+
+@media (max-width: 1399.98px) {
+  .about__long { display: none; }
+  .about__short { display: inline; }
+}
+
+/* Tablet: portrait goes full width on top, the other two sit below it.
+   The original also locks the grid to an aspect ratio, which leaves a gap under the photos; that is dropped here. */
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .about { gap: 36px; padding: 40px 24px 80px; }
+  .about__text { width: 44%; gap: 40px; }
+  .about__row { align-items: center; }
+  .about__photos { position: static; height: auto; grid-template-rows: repeat(4, 200px); }
+  .about__photo { grid-row: span 2; }
+  .about__photo--main { grid-column: span 2; }
+}
+
+/* Mobile: one photo on top, text below */
+
+@media (max-width: 809.98px) {
+  .about { flex-direction: column; align-items: stretch; gap: 0; padding: 0 0 64px; }
+  .about__text { order: 1; width: 100%; gap: 40px; padding: 28px 20px 0; }
+  .about__title { font-size: 28px; }
+  .about__bio { font-size: 15px; }
+  .about__photos { position: static; display: flex; flex: none; height: 340px; padding: 20px 20px 0; }
+  .about__photo--main { flex: 1 1 0; }
+  .about__photo:not(.about__photo--main) { display: none; }
+}

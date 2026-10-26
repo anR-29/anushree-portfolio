@@ -1,0 +1,196 @@
+/* Footer: quote and links above an ASCII garden that grows when watered.
+   Relies on the tokens and fonts declared in hero.css. */
+
+.footer {
+  --footer-bg: #191918;
+  --footer-rule: #363635;
+  --footer-label: #EAE8E3;
+  --footer-link: #666;
+  --footer-link-hover: #BAB8AF;
+  --moss: #B2BF5A;
+  --magenta: #E20074;
+  --butter: #F7FEBC;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--footer-bg);
+}
+
+.footer__top {
+  display: flex;
+  gap: 36px;
+  width: 100%;
+  padding: 72px 36px 0;
+  border-top: 1px solid var(--footer-rule);
+}
+
+.footer__intro {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 12px;
+  width: 546px;
+}
+
+.footer__quote {
+  width: 302px;
+  margin: 0;
+  font: italic 300 24px/1.2 var(--font-serif);
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+
+.footer__label,
+.footer__link {
+  margin: 0;
+  font: 500 12px/1.65 var(--font-mono);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.footer__label {
+  color: var(--footer-label);
+}
+
+.footer__links {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex: none;
+  gap: 10px;
+  width: 546px;
+}
+
+.footer__col {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer__link {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--footer-link-hover);
+}
+
+/* Garden: plants are placed by % inside a fixed-ratio box, so the layout scales with width */
+
+.garden {
+  position: relative;
+  z-index: 9;
+  width: 91%;
+  aspect-ratio: 2.45928;
+  overflow: clip;
+  font: 700 12px/14px var(--font-ascii);
+}
+
+.garden__plant {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: calc(var(--cols) * 1ch);
+  height: calc(var(--rows) * 14px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  white-space: pre;
+  color: inherit;
+  background: none;
+}
+
+.garden__plant:focus-visible {
+  outline: 1px dashed var(--footer-link-hover);
+  outline-offset: 2px;
+}
+
+.garden__line {
+  display: block;
+}
+
+.garden__line--leaf {
+  transition: color 0.6s ease-out 0.15s;
+}
+
+/* Watering-can cursor: stands in for the orange dot while the pointer is over the footer */
+
+.footer.has-can,
+.footer.has-can * {
+  cursor: none;
+}
+
+.can-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.cursor-can .can-cursor {
+  visibility: visible;
+}
+
+.cursor-can .cursor {
+  visibility: hidden;
+}
+
+.can-cursor__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 44px;
+  transform: translate(-50%, -50%);
+}
+
+.can-cursor__can {
+  display: block;
+  width: 39px;
+  height: 30px;
+  transition: rotate 0.18s var(--ease-pop);
+}
+
+.can-cursor__drops {
+  align-self: stretch;
+  height: 42px;
+  font: 700 12px/14px var(--font-ascii);
+  white-space: pre;
+  color: var(--sky);
+}
+
+.can-cursor__drops span {
+  display: block;
+  height: 14px;
+}
+
+/* Tablet: quote column shrinks to fit, links take the rest */
+
+@media (min-width: 810px) and (max-width: 1099.98px) {
+  .footer__intro { width: min-content; }
+  .footer__links { flex: 1 1 0; width: auto; }
+}
+
+/* Mobile: text stacks, garden turns portrait (footer.js swaps in a matching layout) */
+
+@media (max-width: 809.98px) {
+  .footer__top { flex-direction: column; }
+  .footer__intro,
+  .footer__links { width: 100%; }
+  .garden { width: 94%; aspect-ratio: 353 / 528; }
+}
