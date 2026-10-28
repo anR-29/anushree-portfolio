@@ -301,6 +301,11 @@ html {
   box-shadow: 0 20px 55px #333a4b20;
 }
 
+/* A project cover that opens its results or case study. */
+.cover-link {
+  display: block;
+}
+
 .caption {
   display: flex;
   justify-content: space-between;

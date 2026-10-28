@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLD1SSN89R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PLD1SSN89R');
+</script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anushree Roy's on-device maths specialist: results for gradient-free Mixture-of-Experts maths models built from Qwen3-30B and Gemma 4." />
+  <title>On-Device Maths Specialist — Anushree Roy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+    /* --accent is for text (AA on the page), --mark is the warmer bar colour from the project's cover on the home page. */
+    :root{--bg:#f8f8f6;--ink:#252b31;--muted:#788087;--line:#dcdfdf;--accent:#c4471f;--mark:#de552e;--base:#a9b0b8;--soft:#f6ece6;--good:#0ca30c;--warning:#fab219;--width:1050px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;font-size:15px;line-height:1.65}
+    a{color:inherit}a:hover{color:var(--accent)}
+    header{height:65px;display:flex;justify-content:space-between;align-items:center;padding:0 28px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;background:rgba(248,248,246,.94);backdrop-filter:blur(14px)}
+    .identity,.toplinks,.eyebrow,.label,.meta dt,.toc,.tile-label,.card .number,.data-table th{font-size:11px;letter-spacing:.08em;text-transform:uppercase}.identity{font-weight:700}.identity span{font-weight:400;color:var(--muted);margin-left:13px}.toplinks{display:flex;gap:30px}.toplinks a{text-decoration:none}
+    .shell{max-width:1440px;margin:auto}.intro{padding:104px 30px 105px;max-width:var(--width);margin:auto}.back{text-decoration:none;color:var(--muted);font-size:12px}.eyebrow{color:var(--accent);margin:54px 0 14px}h1,h2,h3,.footer b{font-family:'Louize trial','Louize','Louize Display','Instrument Serif',Georgia,serif}h1,h2{font-weight:400;line-height:1.06;letter-spacing:-.025em}h1{font-size:clamp(54px,7.2vw,104px);max-width:950px;margin:0 0 25px}h1 em{font-weight:400}.dek{font-size:clamp(18px,2vw,23px);max-width:710px;line-height:1.48;color:#4e5861;margin:0 0 50px}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);padding-top:22px;margin:0}.meta dt{color:var(--muted);margin-bottom:5px}.meta dd{margin:0;font-size:14px}
+
+    /* Stat tiles: the headline numbers in the intro, and each Gemma 4 version against the pass rule. */
+    .scoreboard{margin-top:72px}.scoreboard>.label{color:var(--muted);font-weight:600}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.section .tiles{margin:38px 0 0}.tile{background:#fff;border:1px solid var(--line);padding:24px 24px 26px}.tile-label{color:var(--muted);margin:0 0 14px;display:block}.tile-value{display:block;font-weight:600;font-size:clamp(34px,3.4vw,46px);line-height:1;letter-spacing:-.03em}.tile p{margin:12px 0 0;color:#58616a;font-size:14px;line-height:1.5}.tile p+.status{margin-top:18px}
+    .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600}.status i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;line-height:1;color:#fff;background:var(--good)}.status--warning i{background:var(--warning);color:#0b0b0b}.status small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+
+    .body-grid{display:grid;grid-template-columns:205px minmax(0,1fr);gap:70px;max-width:1250px;padding:0 30px;margin:auto}.toc{position:sticky;top:105px;align-self:start;display:flex;flex-direction:column;gap:13px;color:var(--muted)}.toc strong{color:var(--ink);margin-bottom:11px;font-weight:600}.toc a{text-decoration:none;letter-spacing:0;text-transform:none;font-size:13px}.toc a:hover{color:var(--accent)}.content{min-width:0}.section{padding:0 0 125px;scroll-margin-top:110px}.label{color:var(--accent);font-weight:700;margin:0 0 18px}h2{font-size:clamp(42px,5vw,72px);max-width:800px;margin:0 0 30px}h3{font-size:21px;letter-spacing:-.025em;margin:0 0 12px;line-height:1.3}.prose{font-size:18px;line-height:1.65;max-width:740px;color:#4e5861}.prose p{margin:0 0 20px}.prose p:last-child{margin:0}.prose strong{color:var(--ink);font-weight:600}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:38px 0 0}.card{border-top:1px solid var(--line);padding-top:22px}.card h3{margin-bottom:8px}.card p{color:#58616a;margin:0}.card .number{color:var(--accent);display:block;margin-bottom:15px}
+    .small-note{font-size:13px;color:var(--muted);margin:24px 0 0}.rule-top{border-top:1px solid var(--line);padding-top:25px}
+
+    /* Results chart: one small multiple per measure, the specialist in the accent and the others in gray.
+       The hairline in each is the pass-rule line, placed at --t of the bar track. */
+    .chart{margin:46px 0 0;background:#fff;border:1px solid var(--line);padding:28px 30px 24px}.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:#58616a;margin-bottom:30px}.legend span{display:inline-flex;align-items:center;gap:8px}.key{display:inline-block;width:14px;height:10px;border-radius:0 3px 3px 0;background:var(--base)}.key--mark{background:var(--mark)}.key--rule{width:1px;height:14px;border-radius:0;background:var(--ink)}
+    .metric{--namew:190px;--valw:70px;--gap:14px;margin-bottom:34px}.metric:last-of-type{margin-bottom:8px}.metric-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}.metric-head h3{font-family:'DM Sans',Arial,sans-serif;font-size:15px;font-weight:600;letter-spacing:0;margin:0}.metric-head span{font-size:13px;color:var(--muted)}
+    .rows{position:relative;padding-top:24px}.rows::before{content:'';position:absolute;top:24px;bottom:0;left:calc(var(--namew) + var(--gap));width:1px;background:var(--line)}
+    .chart-rule{position:absolute;top:18px;bottom:0;width:1px;background:var(--ink);left:calc(var(--namew) + var(--gap) + (100% - var(--namew) - var(--valw) - 2 * var(--gap)) * var(--t));pointer-events:none}.chart-rule em{position:absolute;top:-18px;left:0;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-size:11px;color:var(--ink)}.chart-rule--end em{transform:translateX(-100%)}
+    .row{display:grid;grid-template-columns:var(--namew) 1fr var(--valw);column-gap:var(--gap);align-items:center;min-height:34px;outline:none;transition:opacity .2s ease}.row:focus-visible{box-shadow:0 0 0 2px var(--accent);border-radius:3px}.rows:hover .row:not(:hover),.rows:focus-within .row:not(:focus){opacity:.4}
+    .name{font-size:13px;color:#4e5861;line-height:1.3}.track{position:relative;height:14px}.track i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--w) * 100%);background:var(--base);border-radius:0 4px 4px 0}.val{font-size:13px;font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+    .row--focus .name,.row--focus .val{color:var(--ink);font-weight:600}.row--focus .track i{background:var(--mark)}
+    .tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;line-height:1.4;padding:7px 10px;border-radius:5px;transform:translate(-50%,calc(-100% - 10px));opacity:0;transition:opacity .15s ease;max-width:260px}.tip.on{opacity:1}
+
+    .table-view{margin-top:18px;font-size:13px}.table-view summary{cursor:pointer;color:var(--muted)}.table-view summary:hover{color:var(--accent)}
+    .table-wrap{overflow-x:auto;margin-top:30px}.table-view .table-wrap{margin-top:16px}
+    .data-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}.data-table th{color:var(--muted);font-weight:600;text-align:left;padding:0 12px 12px 0;border-bottom:1px solid var(--ink)}.data-table td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top}.data-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.data-table th.num{text-align:right}.data-table tr.focus td{font-weight:600}.data-table tr.focus td:first-child::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mark);margin-right:9px;vertical-align:1px}
+    .footer{border-top:1px solid var(--line);padding:55px 30px 65px;max-width:1320px;margin:auto;display:flex;justify-content:space-between;align-items:end;color:var(--muted);font-size:13px}.footer b{display:block;color:var(--ink);font-size:38px;font-weight:400;line-height:1.2;margin-bottom:9px}.footer a{text-decoration:none}
+
+    @media(max-width:900px){.body-grid{display:block}.toc{display:none}.intro{padding-top:75px;padding-bottom:85px}.meta{grid-template-columns:repeat(2,1fr)}.tiles{grid-template-columns:1fr}.section{padding-bottom:90px}.cards{grid-template-columns:1fr}}
+    @media(max-width:640px){header{padding:0 18px}.identity span{display:none}.toplinks{gap:16px}.intro{padding:60px 20px 70px}.body-grid{padding:0 20px}.meta{gap:18px}.chart{padding:22px 18px 18px}.metric{--namew:104px;--valw:44px;--gap:10px}.name{font-size:12px}.chart-rule em{font-size:10px}.footer{padding:40px 20px 90px;display:block}.footer>a{display:block;margin-top:20px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.row,.tip{transition:none}}
+  </style>
+</head>
+<body><a href="index.html" style="position:fixed;bottom:20px;left:20px;z-index:9999;background:#35414f;color:#fff;font:14px Arial,sans-serif;padding:12px 18px;border-radius:30px;box-shadow:0 3px 16px #0002;text-decoration:none" aria-label="Return to portfolio home">Portfolio home</a>
+  <header><div class="identity">ANUSHREE ROY <span>ML ENGINEER</span></div><nav class="toplinks" aria-label="Primary"><a href="#qwen">QWEN3-30B</a><a href="#pass-rule">GEMMA 4</a><a href="#next">NEXT</a></nav></header>
+  <div class="shell">
+    <div class="intro">
+      <a class="back" href="index.html#work">← SELECTED WORK</a><p class="eyebrow">ON-DEVICE MATHS SPECIALIST · RESULTS</p>
+      <h1>Cutting a 30B model down <em>until it runs on a phone.</em></h1>
+      <p class="dek">We built a gradient-free way to turn Qwen3-30B, a Mixture-of-Experts model, into subject specialists that run on a phone, and we're now building one from Gemma 4. These are the results. The method stays private while a patent application is being prepared.</p>
+      <dl class="meta"><div><dt>Project</dt><dd>B.Tech team project</dd></div><div><dt>Models</dt><dd>Qwen3-30B-A3B, then Gemma 4 26B-A4B</dd></div><div><dt>Approach</dt><dd>Gradient-free, no retraining</dd></div><div><dt>Status</dt><dd>Ongoing</dd></div></dl>
+
+      <section class="scoreboard" aria-labelledby="score-title">
+        <p class="label" id="score-title">Qwen3-30B maths specialist</p>
+        <div class="tiles">
+          <div class="tile"><span class="tile-label">Accuracy</span><span class="tile-value">40+ points</span><p>ahead of Fisher-based structured pruning (EMNLP 2026) on GSM8K and MATH 500, at matched sparsity.</p></div>
+          <div class="tile"><span class="tile-label">On a phone</span><span class="tile-value">8 tokens/s</span><p>for the 30B maths specialist on a 16 GB RAM phone setup.</p></div>
+          <div class="tile"><span class="tile-label">Speed to build</span><span class="tile-value">20 minutes</span><p>per subject expert instead of 4 hours: about 12x faster than QLoRA, for a 1-point accuracy loss.</p></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="body-grid"><aside class="toc" aria-label="Sections"><strong>ON THIS PAGE</strong><a href="#qwen">Qwen3-30B</a><a href="#pass-rule">Gemma 4: the pass rule</a><a href="#results">Gemma 4: results</a><a href="#second-version">A second version</a><a href="#next">What's next</a></aside><main class="content">
+      <section id="qwen" class="section"><p class="label">01 / QWEN3-30B</p><h2>How much of the original it keeps.</h2>
+        <div class="prose"><p>Our first maths specialist came from Qwen3-30B-A3B, with no retraining. Here's how much of the original model's maths it keeps on each benchmark.</p></div>
+        <div class="table-wrap"><table class="data-table">
+          <thead><tr><th>Benchmark</th><th class="num">Qwen3-30B-A3B</th><th class="num">Maths specialist</th><th class="num">Retention</th></tr></thead>
+          <tbody>
+            <tr><td>MATH-500 (60 problems, 2 subsets incl. held-out)</td><td class="num">53/60</td><td class="num">47/60</td><td class="num">89%</td></tr>
+            <tr><td>GSM8K (60 problems, 2 subsets)</td><td class="num">58/60</td><td class="num">46/60</td><td class="num">79%</td></tr>
+            <tr><td>MATH-500 Level 5 only (30 problems, 2048-token cap)</td><td class="num">14/30</td><td class="num">8/30</td><td class="num">57%</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="pass-rule" class="section"><p class="label">02 / GEMMA 4: THE PASS RULE</p><h2>Next, Gemma 4, with the bar set in advance.</h2>
+        <div class="prose"><p>We're now building a maths specialist from Gemma 4 26B-A4B, again with no retraining. Before running anything, we wrote down what a pass looks like. On <strong>254 held-out competition maths problems</strong>, from AIME 2024, 2025 and 2026, HMMT, and MATH Level 5, the specialist has to clear all three of these:</p></div>
+        <div class="cards">
+          <div class="card"><span class="number">01 · ACCURACY</span><h3>Match the 12B.</h3><p>Match or beat Google's Gemma 4 12B (Q4_0).</p></div>
+          <div class="card"><span class="number">02 · MEMORY</span><h3>Fit in its memory.</h3><p>Use no more memory than the 12B: 6.74 GB.</p></div>
+          <div class="card"><span class="number">03 · SPEED</span><h3>Be much faster.</h3><p>Decode at least 2.5x faster than the 12B.</p></div>
+        </div>
+        <p class="small-note">Every model runs on the same GPU (a Kaggle T4), with the same prompts and greedy decoding.</p>
+      </section>
+
+      <section id="results" class="section"><p class="label">03 / GEMMA 4: RESULTS</p><h2>Same accuracy, less memory, twice the speed.</h2>
+        <div class="prose"><p>On 45 held-out problems, the first 9 from each set, the first version of the specialist ties Gemma 4 12B at <strong>53.3%</strong>. It does that in <strong>6.65 GB</strong>, just under the 12B's 6.74 GB, and decodes at <strong>61.7 tokens a second</strong>, 2.0x the 12B's speed.</p><p>The full Gemma 4 26B-A4B is here as the reference. It scores higher, but it needs 15.92 GB.</p></div>
+
+        <div class="tiles" aria-label="Version one against the pass rule, on 45 held-out problems">
+          <div class="tile"><span class="tile-label">Memory</span><span class="tile-value">6.65 GB</span><p>The limit is Gemma 4 12B's 6.74 GB.</p><span class="status"><i aria-hidden="true">✓</i>Met</span></div>
+          <div class="tile"><span class="tile-label">Accuracy</span><span class="tile-value">53.3%</span><p>Gemma 4 12B also scores 53.3% on these problems.</p><span class="status"><i aria-hidden="true">✓</i><span>Met, a tie<small>254-problem run pending</small></span></span></div>
+          <div class="tile"><span class="tile-label">Decode speed</span><span class="tile-value">2.0x</span><p>61.7 against 30.7 tokens a second. The target is 2.5x.</p><span class="status status--warning"><i aria-hidden="true">!</i>Not met yet</span></div>
+        </div>
+
+        <figure class="chart" aria-label="Memory, accuracy and decode speed for Gemma 4 26B-A4B full, Gemma 4 12B and maths specialist v1, on 45 held-out problems, each against its pass-rule line">
+          <div class="legend" aria-hidden="true"><span><i class="key key--mark"></i>Maths specialist v1</span><span><i class="key"></i>Comparison models</span><span><i class="key key--rule"></i>Pass-rule line</span></div>
+
+          <div class="metric" style="--t:.42125">
+            <div class="metric-head"><h3>Memory</h3><span>GB, lower is better</span></div>
+            <div class="rows">
+              <span class="chart-rule" aria-hidden="true"><em>Limit 6.74</em></span>
+              <div class="row" tabindex="0" data-tip="Gemma 4 26B-A4B, full · 15.92 GB · over the limit"><span class="name">Gemma 4 26B-A4B, full</span><span class="track"><i style="--w:.995"></i></span><b class="val">15.92</b></div>
+              <div class="row" tabindex="0" data-tip="Gemma 4 12B · 6.74 GB · sets the limit"><span class="name">Gemma 4 12B</span><span class="track"><i style="--w:.42125"></i></span><b class="val">6.74</b></div>
+              <div class="row row--focus" tabindex="0" data-tip="Maths specialist v1 · 6.65 GB · 0.09 GB under the limit"><span class="name">Maths specialist v1</span><span class="track"><i style="--w:.415625"></i></span><b class="val">6.65</b></div>
+            </div>
+          </div>
+
+          <div class="metric" style="--t:.533">
+            <div class="metric-head"><h3>Accuracy</h3><span>%, higher is better</span></div>
+            <div class="rows">
+              <span class="chart-rule" aria-hidden="true"><em>To match 53.3</em></span>
+              <div class="row" tabindex="0" data-tip="Gemma 4 26B-A4B, full · 82.2% · the reference"><span class="name">Gemma 4 26B-A4B, full</span><span class="track"><i style="--w:.822"></i></span><b class="val">82.2</b></div>
+              <div class="row" tabindex="0" data-tip="Gemma 4 12B · 53.3% · the score to match"><span class="name">Gemma 4 12B</span><span class="track"><i style="--w:.533"></i></span><b class="val">53.3</b></div>
+              <div class="row row--focus" tabindex="0" data-tip="Maths specialist v1 · 53.3% · ties the 12B"><span class="name">Maths specialist v1</span><span class="track"><i style="--w:.533"></i></span><b class="val">53.3</b></div>
+            </div>
+          </div>
+
+          <div class="metric" style="--t:.959375">
+            <div class="metric-head"><h3>Decode speed</h3><span>tokens a second, higher is better</span></div>
+            <div class="rows">
+              <span class="chart-rule chart-rule--end" aria-hidden="true"><em>Target 2.5x · 76.8</em></span>
+              <div class="row" tabindex="0" data-tip="Gemma 4 26B-A4B, full · 51.4 tok/s · 1.7x the 12B"><span class="name">Gemma 4 26B-A4B, full</span><span class="track"><i style="--w:.6425"></i></span><b class="val">51.4</b></div>
+              <div class="row" tabindex="0" data-tip="Gemma 4 12B · 30.7 tok/s · the baseline"><span class="name">Gemma 4 12B</span><span class="track"><i style="--w:.38375"></i></span><b class="val">30.7</b></div>
+              <div class="row row--focus" tabindex="0" data-tip="Maths specialist v1 · 61.7 tok/s · 2.0x the 12B"><span class="name">Maths specialist v1</span><span class="track"><i style="--w:.77125"></i></span><b class="val">61.7</b></div>
+            </div>
+          </div>
+        </figure>
+
+        <details class="table-view"><summary>View as a table</summary>
+          <div class="table-wrap"><table class="data-table">
+            <thead><tr><th>Model</th><th class="num">Memory</th><th class="num">Accuracy</th><th class="num">Decode speed</th></tr></thead>
+            <tbody>
+              <tr><td>Gemma 4 26B-A4B, full (reference)</td><td class="num">15.92 GB</td><td class="num">82.2%</td><td class="num">51.4 tok/s</td></tr>
+              <tr><td>Gemma 4 12B, Q4_0 (baseline to beat)</td><td class="num">6.74 GB</td><td class="num">53.3%</td><td class="num">30.7 tok/s</td></tr>
+              <tr class="focus"><td>Maths specialist v1</td><td class="num">6.65 GB</td><td class="num">53.3%</td><td class="num">61.7 tok/s</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+      </section>
+
+      <section id="second-version" class="section"><p class="label">04 / A SECOND VERSION</p><h2>Version two: 50 more problems solved.</h2>
+        <div class="prose"><p>Across 1,300 problems, a second version of the specialist solves <strong>50 more</strong> than Gemma 4 12B, and still fits in 6.66 GB. It gives up some speed for that: 55.2 tokens a second, 1.8x the 12B.</p></div>
+        <div class="tiles">
+          <div class="tile"><span class="tile-label">Accuracy</span><span class="tile-value">+50</span><p>more problems solved than Gemma 4 12B, across 1,300 problems.</p></div>
+          <div class="tile"><span class="tile-label">Memory</span><span class="tile-value">6.66 GB</span><p>Still under the 12B's 6.74 GB.</p></div>
+          <div class="tile"><span class="tile-label">Decode speed</span><span class="tile-value">1.8x</span><p>55.2 against 30.7 tokens a second.</p></div>
+        </div>
+      </section>
+
+      <section id="next" class="section"><p class="label">05 / WHAT'S NEXT</p><h2>Two things left to prove.</h2>
+        <div class="prose"><p>Both Gemma 4 versions fit in the 12B's memory. On accuracy, version one ties the 12B on 45 problems and version two solves 50 more across 1,300; the full 254-problem pass-rule run is still to come. Speed is the open gap: <strong>2.0x at best today, against a 2.5x target.</strong></p></div>
+        <p class="small-note rule-top">Results only. The method is withheld while a patent application is being prepared. <a href="assets/moe-results.csv" download>Download the raw Gemma 4 results (CSV)</a></p>
+      </section>
+    </main></div>
+    <footer class="footer"><div><b>Thanks for reading.</b>On-Device Maths Specialist · Anushree Roy</div><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a></footer>
+  </div>
+  <div class="tip" aria-hidden="true"></div>
+  <script>
+  (()=>{
+   // One shared tooltip for the chart rows, on hover and keyboard focus. Every value is also labelled and in the table.
+   const tip=document.querySelector('.tip');
+   function show(row){const bar=row.querySelector('.track i').getBoundingClientRect(),half=Math.min(130,innerWidth/2-8);tip.textContent=row.dataset.tip;tip.style.left=Math.max(half,Math.min(innerWidth-half,bar.right))+'px';tip.style.top=bar.top+'px';tip.classList.add('on')}
+   const hide=()=>tip.classList.remove('on');
+   document.querySelectorAll('.row[data-tip]').forEach(row=>{row.addEventListener('mouseenter',()=>show(row));row.addEventListener('focus',()=>show(row));row.addEventListener('mouseleave',hide);row.addEventListener('blur',hide)});
+   addEventListener('scroll',hide,{passive:true});
+  })();
+  </script>
+</body>
+</html>

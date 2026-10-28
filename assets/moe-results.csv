@@ -1,0 +1,8 @@
+set,model,size_gb,accuracy_pct,decode_tok_s,n_problems
+gemma4_45,Gemma 4 26B-A4B full,15.92,82.2,51.4,45
+gemma4_45,Gemma 4 12B Q4_0,6.74,53.3,30.7,45
+gemma4_45,Maths specialist v1,6.65,53.3,61.7,45
+gemma4_15,Gemma 4 26B-A4B full,15.92,86.7,51.4,15
+gemma4_15,Gemma 4 12B Q4_0,6.74,40.0,30.7,15
+gemma4_15,Maths specialist v1,6.65,53.3,61.7,15
+gemma4_15,Maths specialist v2,6.66,66.7,55.2,15
